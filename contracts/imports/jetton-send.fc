@@ -1,0 +1,22 @@
+() send_jetton(slice from, slice to, int amount) impure inline {
+   var body = begin_cell()
+        .store_uint(op::transfer(), 32)
+        .store_uint(0, 64)
+        .store_coins(amount)
+        .store_slice(to)
+        .store_slice(my_address())
+        .store_int(0, 1)
+        .store_coins(0)
+        .store_int(0, 1)
+        .end_cell();
+
+    var payload = begin_cell()
+      .store_uint(flag::regular(), 6) ;; we should not bounce here cause receiver can have uninitialized contract
+      .store_slice(from)
+      .store_coins(0)
+      .store_uint(1, 107) ;; transfer_length: 107 bits
+      .store_ref(body)
+      .end_cell();
+
+    send_raw_message(payload, 64);
+}

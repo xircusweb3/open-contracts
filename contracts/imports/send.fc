@@ -1,0 +1,9 @@
+() send_grams(slice to, int amount) impure inline_ref {
+  var message = begin_cell()
+      .store_uint(flag::regular(), 6) ;; nobounce
+      .store_slice(to)
+      .store_coins(amount)
+      .store_uint(0, 107)
+      .end_cell();
+  send_raw_message(message, 1);
+}

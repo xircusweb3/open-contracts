@@ -1,0 +1,2 @@
+const int ADDRESS_SIZE = 267;     ;; Wallet Format
+slice null_addr() asm "b{00} PUSHSLICE";
