@@ -3,8 +3,9 @@
 - Jetton
 - NFT
 - SBT
-- Marketplace Direct
-- Marketplace Auction
+- Bundle - bundles nft, sbt, jetton as nft or pack
+- NFT Marketplace Direct - buys nft directly
+- NFT Marketplace Auction - bid nft within time period
 - Splitter
 - Vesting
 - Locker
